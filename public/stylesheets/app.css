@@ -1,0 +1,19 @@
+.trademark {
+	font-size: 10px;
+}
+
+#commentButtonContainer {
+	background-color: #f1f2f3;
+}
+
+.deleteForm {
+	display: inline;
+}
+
+.tester {
+	border: 1px solid red;
+}
+
+.userForm {
+	width: 67%;
+}

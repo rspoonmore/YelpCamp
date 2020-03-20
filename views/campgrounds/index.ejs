@@ -1,0 +1,38 @@
+<%-include("../partials/header.ejs")%>
+
+    <div class="container">
+        <header class="jumbotron">
+            <div class="container">
+                <h1>Campgrounds</h1>
+                <p>View our hand-picked campgrounds from around the world!</p>
+                <p>
+                    <a class="btn btn-primary btn-lg" href="/campgrounds/new">Add a New Campground</a>
+                </p>
+            </div>
+        </header>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>Our Most Popular Campgrounds</h3>
+            </div>
+        </div>
+
+        <div class="row" >
+            <% campgrounds.forEach((campground) => { %>
+                <div class="col-lg-3 col-md-6 my-1">
+                    <div class="card text-center text-white bg-secondary">
+                        <img src="<%= campground.image %>" class="card-img-top" alt="<%= campground.name%> image">
+						<div class="card-body text-white bg-secondary">
+							<h4 class="card-title"><%=campground.name%></h4>
+							<a href="/campgrounds/<%=campground._id%>" class="btn btn-primary">More Info</a>
+						</div>
+					</div>
+                </div>
+            <%});%>
+        </div>
+    </div>
+    
+
+<a href="/">Back to Homepage</a>
+
+<%-include("../partials/footer.ejs")%>

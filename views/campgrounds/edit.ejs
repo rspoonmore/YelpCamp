@@ -1,0 +1,37 @@
+<%-include("../partials/header.ejs")%>
+
+<div class="container justify-content-center">
+    <div class="row justify-content-center my-20 mx-auto">
+        <h1>Edit <%= campground.name %></h1>
+    </div>
+    <div class="row justify-content-center my-20 mx-auto">
+        <form action="/campgrounds/<%= campground._id %>?_method=PUT" method="POST" class="userForm">
+            <div class="form-group">
+                <label for="newCampgroundName">Campground Name</label>
+                <input type="text" class="form-control" name="Campground[name]" id="newCampgroundName" value="<%= campground.name %>" required>
+            </div>
+            <div class="form-group">
+                <label for="newImageURL">Campground Image URL</label>
+                <input type="text" class="form-control" name="Campground[image]" id="newImageURL" value="<%= campground.image %>">
+            </div>
+			<div class="form-group">
+				<label for="campgroundPrice">Price Per Night</label>
+				<div class="input-group">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="dollarSign">$</span>
+					</div>
+					<input type="number" class="form-control" id="campgroundPrice" name="Campground[price]" value="<%= campground.price %>" aria-describedby="dollarSign" min="0.00" step="0.01" required>
+					<div class="invalid-tooltip">Please enter a price per night.</div>
+				</div>
+			</div>
+			<div class="form-group">
+                <label for="description">Campground Description</label>
+				<textarea type="text" class="form-control" name="Campground[description]" id="description" rows="3"><%= campground.description %></textarea>
+            </div>
+            <button type="submit" class="btn btn-lg btn-primary btn-block">Submit</button>
+        </form>
+    </div>
+    <a href="/campgrounds">Go Back</a>
+</div>
+
+<%-include("../partials/footer.ejs")%>
