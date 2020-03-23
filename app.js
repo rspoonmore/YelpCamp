@@ -19,7 +19,18 @@ var commentRoutes    = require("./routes/comments.js"),
 
 mongoose.set('useUnifiedTopology', true);
 mongoose.set('useFindAndModify', false);
-mongoose.connect("mongodb://localhost/yelpcamp", {useNewUrlParser: true});
+
+//Local: mongodb://localhost/yelpcamp
+//Heroku: mongodb+srv://rspoonmore:PASSWORD@yelpcampcluster-rivvo.mongodb.net/test?retryWrites=true&w=majority
+mongoose.connect(process.env.DATABASEURL || "mongodb://localhost/yelpcamp", {
+	useNewUrlParser: true,
+	useCreateIndex: true
+}).then(() => {
+	console.log('Connected to DB')
+	})
+	.catch(err => {
+		console.log('Error:', err.message)
+	});
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
